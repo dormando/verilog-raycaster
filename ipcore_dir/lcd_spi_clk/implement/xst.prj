@@ -1,0 +1,2 @@
+verilog work ../../lcd_spi_clk.v
+verilog work ../example_design/lcd_spi_clk_exdes.v
