@@ -171,7 +171,7 @@ when queried.
   you figure out what I did wrong.
 
 * It's psychotic how hard it is to write a unit test! You can write test
-  benches and a simulator, which I relied on heavily but late in the process.
+  benches and use a simulator, which I relied on heavily but late in the process.
 There are ways to run the tooling on the commandline and dump printed output,
 which I can then wrap in unit tests and run through ranges of data. Trying
 harder to get this working would've saved me a *lot* of time over the project.
@@ -185,13 +185,13 @@ simulate cleanly.
 
 * There are two major branches of raycaster software: lodev's, which uses
   planar projection to avoid fisheye correction or constant cos/sin fiddling.
-Then the "Classic", which has lookup tables for most possible angles. As soon
-as I started decomposing the lodev algorithm to remove divisions, I realize
-the classic raycaster has a lot of relatively small tables and is potentially
+Then the "Classic", which has sin/cos/tan/atan lookup tables for most possible angles. As soon
+as I started decomposing the lodev algorithm to remove divisions, I realized
+the classic raycaster has a lot of small tables and is potentially
 simpler for an FPGA. In the end I embedded a divider to overcome the loss of a
-large angular lookup table.
+large angle lookup table.
 
-* I wrote all the code like a software person would; lots of state machines
+* I wrote all the code like a software person would. Lots of state machines
   and a few larger-ish modules. The further I got along the better I
 understand how thinking at the logic level would change this design. It would
 be completely different! I don't know what that is though.
@@ -229,18 +229,18 @@ wouldn't consider this finished unless it looks better. Though from most
 angles it looks pretty good.
 
 * Sprites are halfway there. Converting sprites from a framebuffer to scanline
-  algo is fairly hard. Most early came consoles do this (NES PPU/etc). They
+  algo is fairly hard. Most early game consoles do this (NES PPU/etc). They
 are starting to work; some X positional swimming when rotating the camera, and
 need to implement sorting for the scanline.
 
 * Sprites can take a further optimization: since the maps are small there's
   enough RAM to make a chain bucket hash table out of the sprite metadata. The
 raycaster then logs which map squares it examines and the sprite scanline
-simply pulls those in order and sorts sprites which occupy the same square.
+module simply pulls those in order and sorts sprites which occupy the same square.
 Currently it iterates through all possible sprites to figure out what's on
 that scanline (though it does this while the line is being drawn)
 
-* I really want to have the sprites drawn fully parallel into separate memory;
+* I really want to have the sprites drawn in parallel into separate memory;
   however this requires blanking out the line first which will burn cycles.
 The blitter can source from two memories in the same cycle, painting from the
 wall line if the sprite pixel is the alpha (transparent) pixel.
@@ -258,8 +258,8 @@ wall line if the sprite pixel is the alpha (transparent) pixel.
 * These are kind of expensive chips ($5 each), 20mhz qspi SRAM's might work as
   well. Could also be used as frame buffers, but they're a bit slow for that.
 
-* I also bought some smaller LCD's (which use a slightly different
-  controller). It would be fun to run a HUD or automap on an entirely separate
+* I also bought some smaller LCD's which use a slightly different
+  controller. It would be fun to run a HUD or automap on an entirely separate
 SPI LCD!
 
 * Targetting a framerate of 30fps, driven by the arduino. Optimizing the feed
