@@ -196,6 +196,16 @@ large angular lookup table.
 understand how thinking at the logic level would change this design. It would
 be completely different! I don't know what that is though.
 
+* Using another mojo tutorial, I experimented with using a trivial core and
+  some ASM to enable hardware reuse. Every time you specify a multiplier in
+verilog, it will either burn one of 16 available DSP's (for the spartan-6), or
+create a mess of multiplier wiring in place. Thus roundtripping through
+reuable logic can save a lot of LUTs! Except even after optimization the core
+used a lot of space on the FPGA. I converted the raycaster to using ASM
+for setup/teardown. However the result wasn't
+very readable. I'd use a core for more complex designs, but with this one you
+can simply open `cast_ray.v` and understand how the whole thing flows.
+
 * Learning verilog is obnoxiosly hard. "Verilog by Example" was a great find
   in helping me bootstrap past the various internet tutorials for hobbyist
 boards. Most books on the subject are textbooks, most are very old and very
@@ -242,7 +252,7 @@ wall line if the sprite pixel is the alpha (transparent) pixel.
 
 * I discovered some 45mhz quad-spi 8 pin 4mbit SRAM chips (IS62WVS5128GBLL-45NLI). Hooking one of these up would allow streaming textures from the SRAM at draw time, upping back to 64x64.
 
-* Similarly, the arduino could load map/sprite data from an SDCARD through the
+* Similarly, the arduino could load map/sprite data from an SD card through the
   LCD screen, or an SPI NOR flash chip.
 
 * These are kind of expensive chips ($5 each), 20mhz qspi SRAM's might work as
