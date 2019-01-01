@@ -135,6 +135,14 @@ case: What you expect to see.
 This project took a lot of turns. I'll mostly bullet point the development
 notes and expand over time.
 
+* First wrote a reference implementation in golang because I need more
+  practice in that language. Took about an hour to get untextured lodev
+ported. I then instrumented all of the stages of the math and swapped in
+lookup tables where the FPGA would use them. Was able to test ideas and
+compare math output with the FPGA simulator for debugging. This would have
+turned into a great suite of unit tests, but setting that up is obnoxiously
+hard. Sadly the golang is a mess but I might post it later.
+
 * Initially used a 32 megabyte SDRAM chip on an expansion board. Stored lookup
   tables and framebuffers, with the intention of drawing frame A while
 blitting frame B. This mostly worked, except certain specific bits were
