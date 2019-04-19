@@ -14,52 +14,7 @@ optimized yet. Built with Xilinx's EOL'ed ISE monstrosity.
 
 ## Motivation
 
-I kept two DOS game programming books from my younger days, and recently
-decided to skim through the earlier one: Tricks of the Game Programming Guru's
-(classic LaMothe). I had no idea the book was so badly out of date by the time
-it hit print! It continually references "wolf3D and DOOM", but has zero
-mentions of BSP trees. It goes on a bit about how to create an unoptimized
-wolf3D-style engine and enough to make Wing Commander.
-
-The other book I kept: Black Art of 3D Game Programming, by the same author,
-is actually pretty great! It's organized better, goes into much more depth on
-VGA registers, more code examples, BSP trees, Z buffers, etc. Portions of it are still a
-perfectly good reference on how to design 3D games.
-
-It's fascinating [reading about what went into wolf3D](http://fabiensanglard.net/gebbwolf3d/).
-Skimming these old school game programming books was even more interesting; most people
-no tools or knowledge to build a highly optimized game.
-
-Another childhood fascination were the processors being slapped 
-into game cartridges. Hadn't noticed whent he NES did it, but the
-SNES outright advertised it.
-
-It got me wondering; what if Wolf3D came with a GPU? Or specialized CPU?
-Ultimately there was an SNES version without a chip, optimized with BSP trees
-instead of raycasting, but I decided this was a fun enough idea to try out.
-
-My design goal was to take a normal arduino and attach an FPGA to it like a
-customized GPU or extension chip. This means game logic, collision detection,
-asset/table loading and frame firing is managed by the arduino. Then GPU
-does the heavy lifting of raycasting maps, scaling sprites, and sending data to
-the screen.
-
-The best part is: no one in their right mind would do this! If you could ship
-wolf3D to PC's as a cartridge with an accelerator chip in it, it would
-probably look a lot more like a specialized CPU than this bizarre contraption.
-
-I'd picked up a mojo v3 FPGA earlier in 2018 out of curiosity. Made some lights
-blink, then moved on. I started this project months later when the idea
-hit me. I'm not a logic designer by any stretch and you should not emulate
-or learn from this code. The original directory name for this project
-was "hello-world-verilog".
-
-This took a few months of an hour here and there plus a couple mornings and
-afternoons. It does suffer from "it's late and you're tired" syndrome, with a number of bugs.
-
-It's not quite all there yet. There's no arduino, but all the basics are
-in so I'm making the repo public before 2019 shows up and I turn back into an
-adult.
+Relink this somewhere else later.
 
 ## Implementation Notes
 
