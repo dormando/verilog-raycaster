@@ -14,7 +14,8 @@ optimized yet. Built with Xilinx's EOL'ed ISE monstrosity.
 
 ## Motivation
 
-Relink this somewhere else later.
+See: http://www.dormando.me/post/fpga-raycaster/ for a more thorough
+explainer.
 
 ## Implementation Notes
 
